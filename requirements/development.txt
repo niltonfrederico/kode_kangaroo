@@ -1,0 +1,9 @@
+-r base.txt
+
+black==19.3b0
+
+pytest==5.0.1
+pytest-black==0.3.7
+pytest-flask==0.15.0
+pytest-sugar==0.9.2
+pytest-cov==2.7.1
