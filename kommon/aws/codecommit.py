@@ -3,17 +3,24 @@ from ..choices import Choices
 
 
 SORT_BY = Choices(
-    ("REPOSITORY_NAME", "repositoryName", "repositoryName"),
-    ("LAST_MODIFIED_DATE", "lastModifiedDate", "lastModifiedDate"),
+    ("repositoryName", "REPOSITORY_NAME", "repositoryName"),
+    ("lastModifiedDate", "LAST_MODIFIED_DATE", "lastModifiedDate"),
 )
 
 ORDER = Choices(
-    ("ASCENDING", "ascending", "ascending"), ("DESCENDING", "descending", "descending")
+    ("ascending", "ASCENDING", "ascending"), ("descending", "DESCENDING", "descending")
 )
 
 
 class CodeCommitClient(BaseAwsClient):
+
+    service = "codecommit"
+
     def list_repositories(
         self, next_token=None, sort_by=SORT_BY.REPOSITORY_NAME, order_by=ORDER.ASCENDING
     ):
-        return self.client(nextToken=next_token, sortBy=sort_by, order=order_by)
+        data = self._prepare_args(
+            **{"nextToken": next_token, "sortBy": sort_by, "order": order_by}
+        )
+        return self.client.list_repositories(**data)
+

@@ -106,4 +106,3 @@ class Choices(object):
 
     def __deepcopy__(self, memo):
         return self.__class__(*deepcopy(self._triples, memo))
-
