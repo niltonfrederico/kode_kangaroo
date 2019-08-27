@@ -5,7 +5,7 @@ from sqlalchemy import Column, Integer, DateTime
 from .db import BaseModel as DbBaseModel
 
 
-class BaseModel(DbBaseModel):
+class BaseModel(DbBaseModel):  # noqa
 
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow)
