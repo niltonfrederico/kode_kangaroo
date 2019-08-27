@@ -3,7 +3,7 @@ from copy import deepcopy
 
 class Choices(object):
     """ 
-    Extended from Django Model Utils, please refer to  
+    Extracted from Django Model Utils, please refer to  
     https://django-model-utils.readthedocs.io/en/latest/utilities.html#choices 
     """
 
