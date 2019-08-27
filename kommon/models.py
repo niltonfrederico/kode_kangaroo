@@ -12,4 +12,9 @@ class BaseModel:
 
     @declared_attr
     def __tablename__(cls):
-        return cls.__name__.lower()
+        tablename = cls.__name__.lower()
+
+        if tablename.endswith("model"):
+            tablename = tablename[:-5]
+
+        return tablename

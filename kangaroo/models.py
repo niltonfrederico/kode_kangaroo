@@ -10,7 +10,7 @@ ISSUE_STATUS = Choices(("closed", "closed"), ("open", "open"))
 
 
 class IssueModel(BaseModel):  # noqa
-    repository_id = Column(UUIDType(binary=False), primary_key=True)
+    repository_uid = Column(UUIDType(binary=False), unique=True)
     name = Column(String)
     text = Column(String)
     status = Column(ChoiceType(ISSUE_STATUS))
