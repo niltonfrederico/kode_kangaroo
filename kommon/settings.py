@@ -1,4 +1,9 @@
-from os import environ
+from environs import Env
 
-DATABASE_NAME = "db" if "DATABASE_NAME" not in environ else environ["DATABASE_NAME"]
-DATABASE_URI = f"sqlite:///{DATABASE_NAME}.db"
+config = Env()
+
+ENVIRONMENT = config("ENVIRONMENT", "dev")
+
+if ENVIRONMENT == "test":
+    DATABASE_NAME = config("DATABASE_NAME", "development")
+    DATABASE_URI = f"sqlite:///{DATABASE_NAME}.db"
